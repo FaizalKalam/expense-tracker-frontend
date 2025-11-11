@@ -1,0 +1,29 @@
+
+  
+  <mat-drawer-container autosize>
+    <mat-drawer mode="side" #drawer>
+      <mat-nav-list>
+        
+          <button mat-list-item (click)="openDialog()"><mat-icon>person</mat-icon>Profile</button>
+       
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <mat-drawer-content class="drawer-content">
+      <mat-toolbar class="toolbar">
+        <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon"  
+        (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="logo">Expense Tracker</span>
+        <span class="example-spacer"></span>
+        <button matIconButton class="example-icon logout" aria-label=" icon-button with logout icon" 
+        (click)="logout()">
+          <mat-icon>logout</mat-icon> 
+        </button>
+      </mat-toolbar>
+          <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+      
+      <!-- <app-dashboard></app-dashboard> -->

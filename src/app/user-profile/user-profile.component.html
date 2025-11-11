@@ -1,0 +1,33 @@
+
+  <!-- <h2 mat-dialog-title>User Profile</h2>
+    <mat-dialog-content>
+      <p><strong>Name:</strong> {{ userName }}</p>
+      <p><strong>Email:</strong> {{ userEmail }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  <div>
+    <button>Edit</button>
+  </div> -->
+
+  <h2 mat-dialog-title>User Profile</h2>
+
+<mat-dialog-content *ngIf="!isEditing">
+  <p><strong>Name:</strong> {{ userName }}</p>
+  <p><strong>Email:</strong> {{ userEmail }}</p>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="isEditing">
+  <label>Name:</label>
+  <input [(ngModel)]="userName" />
+  <label>Email:</label>
+  <input [(ngModel)]="userEmail" />
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close *ngIf="!isEditing">Close</button>
+  <button mat-button (click)="isEditing = true" *ngIf="!isEditing">Edit</button>
+  <button mat-button (click)="saveChanges()" *ngIf="isEditing">Save</button>
+</mat-dialog-actions>
+

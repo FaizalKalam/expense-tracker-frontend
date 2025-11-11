@@ -1,0 +1,72 @@
+<h3 mat-dialog-title>Add expenses</h3>
+<mat-dialog-content><br>
+<div>
+    <mat-form-field class="chip-field" appearance="outline">
+        <mat-label>Add categories</mat-label>
+      
+        <mat-chip-grid #chipGrid aria-label="Tag list">
+          <mat-chip-row *ngFor="let category of categories" (removed)="remove(category)">
+            {{category}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </mat-chip-grid>
+      
+        <input
+          placeholder="New category..."
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeys"
+          (matChipInputTokenEnd)="add($event)" />
+      </mat-form-field>
+      
+</div>
+<br>
+<div class="expenseForm">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [(ngModel)]="expenseDetails.date"
+              name="date"
+              id="date"
+            >
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field><br>
+        <!-- <label for="item">Item: </label>
+        <input type="text" id="item" name="item" [(ngModel)]="expenseDetails.title"><br> -->
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Expense Name</mat-label>
+              <input matInput placeholder="Ex. Recharge" id="item" name="item" [(ngModel)]="expenseDetails.title">
+            </mat-form-field></form><br>
+        <!-- <label for="category">Category</label>
+        <select name="category" id="category" [(ngModel)]="expenseDetails.category"><br>
+            <option value=""></option>
+            <option *ngFor="let category of categories" [value]="category.toLowerCase()">{{category}}</option>
+        </select> -->
+        <mat-form-field>
+            <mat-label>Select Category</mat-label>
+            <mat-select name="category" id="category" [(ngModel)]="expenseDetails.category">
+              @for (category of categories; track category) {
+                <mat-option [value]="category.toLowerCase()">{{category}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field><br>
+        <!-- <label for="amount">Amount: </label>
+        <input type="number" id="amount" name="amount" [(ngModel)]="expenseDetails.amount"><br> -->
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Amount</mat-label>
+              <input matInput id="amount" name="amount" [(ngModel)]="expenseDetails.amount">
+            </mat-form-field></form><br>
+        <!-- <button type="submit" (click)="submitExpense()">Submit</button> -->
+        <button mat-raised-button color="primary" type="submit" (click)="submitExpense()">Submit</button>
+    </form>
+
+</div>
+</mat-dialog-content>

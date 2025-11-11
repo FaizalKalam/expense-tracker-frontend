@@ -1,0 +1,79 @@
+<!-- <p>expense-display works!</p>
+<div *ngFor="let expense of expense">
+    <p>Date : {{expense.date}}</p>
+    <p>Amount : {{expense.amount}}</p>
+   
+</div>
+<h3>Total Expense : {{getTotalExpense()}}</h3> -->
+
+
+<h3>My Expenses</h3>
+
+<div *ngIf="isLoading" class="loading-message">
+  <p>Loading expenses...</p> 
+</div>
+
+<!-- Filter -->
+<mat-form-field *ngIf="!isLoading" appearance="outline" class="filter-field">
+  <mat-label>Search expenses</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search by item or category" #filterInput>
+</mat-form-field>
+
+<!-- No Data Message -->
+<div *ngIf="!isLoading && dataSource.data.length === 0" class="no-data-message">
+  <p>No expenses found. Add some expenses to see them here.</p>
+</div>
+
+<!-- Table -->
+<div *ngIf="!isLoading && dataSource.data.length > 0" class="table-container">
+  <table 
+    mat-table 
+    [dataSource]="dataSource" 
+    matSort 
+    class="mat-elevation-z8 expenses-table"
+  >
+    <!-- ===== DATE COLUMN ===== -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let expense">{{ expense.date | date:'mediumDate' }}</td>
+    </ng-container>
+
+    <!-- ===== ITEM COLUMN ===== -->
+    <ng-container matColumnDef="item">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+      <td mat-cell *matCellDef="let expense">{{ expense.title }}</td>
+    </ng-container>
+
+    <!-- ===== CATEGORY COLUMN ===== -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let expense">{{ expense.category | titlecase }}</td>
+    </ng-container>
+
+    <!-- ===== AMOUNT COLUMN ===== -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+      <td mat-cell *matCellDef="let expense">{{ expense.amount | currency:'USD':'symbol':'1.2-2' }}</td>
+    </ng-container>
+
+    <!-- ===== TABLE ROWS ===== -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- ===== TOTAL EXPENSE ===== -->
+  <div class="total-section">
+    <p class="total-amount">
+      Total Expense: {{ getTotalExpense() | currency:'USD':'symbol':'1.2-2' }}
+    </p>
+  </div>
+
+  <!-- ===== PAGINATOR ===== -->
+  <mat-paginator 
+    [pageSize]="5" 
+    [pageSizeOptions]="[5, 10, 25]" 
+    showFirstLastButtons
+    aria-label="Select page of expenses"
+  >
+  </mat-paginator>
+</div>

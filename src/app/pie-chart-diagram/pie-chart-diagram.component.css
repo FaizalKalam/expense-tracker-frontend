@@ -1,0 +1,9 @@
+.chart-box {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+  }
+
+  canvas {
+    display: block;
+  }

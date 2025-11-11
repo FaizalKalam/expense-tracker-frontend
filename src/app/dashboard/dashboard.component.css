@@ -1,0 +1,178 @@
+/* Add this to ensure proper layout */
+/* NOTE: If using Angular, this should be applied to the host component */
+/* :host {
+    display: block;
+    height: 100vh;
+} */
+ 
+/* === Layout and Global Containers === */
+
+/* Full-width container for the hero background */
+
+
+/* Center and space out the main content area */
+.container {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+.dashboard-container {
+    padding-top: 1rem; /* Add some space above the content below the hero */
+}
+
+.logoutBar {
+  padding: 1rem;
+  text-align: right;
+}
+
+/* === Reusable Card Style === */
+
+.card-style {
+    /* Rounded corners */
+    border-radius: 12px; 
+    
+    /* Ensures background and content respect the border-radius */
+    overflow: hidden;    
+    
+    /* Box Shadow (Bottom Shadow look) */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 
+                0 6px 6px rgba(0, 0, 0, 0.1);    
+    
+    /* White background for the card body (needed for the shadow to look clean) */
+    background-color: white;
+}
+
+
+/* === Hero Section Styling === */
+
+/* Specific styles for the hero container within the wrapper */
+.container.hero-container-styles {
+  margin-bottom: 16px;/* Add space below the whole hero card */
+  margin-top: 32px; 
+}
+
+/* The hero section itself - maintains the flex layout */
+.hero {
+    /* The aqua background is applied here to be clipped by the parent's border-radius */
+     
+    display: flex;
+    align-items: center; /* Vertically centers both sections */
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 32px 0; /* Vertical padding inside the hero card */
+}
+
+.dashboard-header-text {
+    width: 50%;
+    /* No margin top/bottom here, let the .hero padding handle it */
+    padding-left: 20px;
+}
+
+.chart {
+    width: 50%;
+}
+
+.tagline, .main-title, .subtitle {
+    margin: 0; 
+}
+
+.tagline {
+    font-size: 3rem;
+    color: #333;
+    padding-bottom: 4px;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.1;
+    padding-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 3rem;
+    color: #555;
+}
+
+.subtitle span {
+    color: #3cb44e; /* Green brand color */
+    font-weight: 600;
+}
+
+
+/* === Expense Display Styling === */
+
+.expenseDisplay {
+    padding: 1rem; /* Padding inside the card content area */
+}
+
+.expenseDisplay h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
+}
+
+/* === Floating Action Button === */
+
+.addExpenseButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100; /* Ensure it stays above other content */
+}
+
+.addButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%; /* Makes it perfectly circular */
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bolder;
+  font-size: 24px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Small shadow for the button lift */
+  transition: background-color 0.3s;
+}
+
+.addButton:hover {
+  background-color: #1b5523; /* Slightly darker green on hover */
+}
+
+/* button*/
+section {
+  display: flex;
+  align-items: center;
+}
+
+.example-label {
+  font-size: 28px;
+  margin: 0 16px 0 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

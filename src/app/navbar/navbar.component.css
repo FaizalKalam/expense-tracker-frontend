@@ -1,0 +1,43 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .toolbar {
+    background-color:#4CAF50; /* Green for testing */
+    color: white; /* Change text color */
+  }
+
+  mat-drawer-container {
+    height: 100vh;
+  }
+  
+  mat-drawer {
+    width: 250px; /* Sidebar width */
+  }
+  /* .drawer-content {
+    background-color: #a9f7ac;
+  } */
+  .logo{
+    margin: auto;
+  }
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centers all content horizontally */
+    background-color: #4CAF50;
+    color: white;
+    position: relative;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  

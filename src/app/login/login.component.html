@@ -1,0 +1,34 @@
+<div class="body">
+    <div class="main">
+        <h1>Expense Tracker</h1>
+        <h3>Enter your login credentials</h3>
+    
+        <form (ngSubmit)="loginSubmit()">
+            <label for="email">
+                Email:
+            </label>
+            <input type="email" id="email" name="email" 
+                placeholder="Enter your Email" [(ngModel)]="logUser.email" required>
+    
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" id="password" name="password" 
+                placeholder="Enter your Password" [(ngModel)]="logUser.password" required>
+    
+            <div class="wrap">
+                <button type="submit">
+                    Login
+                </button>
+            </div>
+        </form>
+        
+        <p>Not registered?
+            <a routerLink="/register" style="text-decoration: none;">
+                Create an account
+            </a>
+        </p>
+    </div>
+</div>
+
+
