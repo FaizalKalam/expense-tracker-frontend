@@ -9,13 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   constructor(private http:HttpClient) { }
-
-  private apiUrl="http://localhost:3000/api/auth";
+  //https://expense-tracker-backend-k359.onrender.com
+  private apiUrl="https://expense-tracker-backend-k359.onrender.com/api/auth";
   //private apiUrl = "http://192.168.43.237:3000/api/auth"; 
 
 
   regUser(userData:RegisterUser):Observable<any>{
-    console.log("Received data",userData);
+    
     return this.http.post<any>(`${this.apiUrl}/register`,userData);
   }
 

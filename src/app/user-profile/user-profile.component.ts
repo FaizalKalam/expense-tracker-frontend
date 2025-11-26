@@ -39,8 +39,7 @@ export class UserProfileComponent implements OnInit {
       name:this.userName,
       email:this.userEmail
     }).subscribe({
-      next:(res)=>{
-        console.log('User profile updated',res);
+      next:()=>{
         this.isEditing=false;
       },
       error:(err)=>{

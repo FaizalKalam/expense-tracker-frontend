@@ -65,7 +65,6 @@ export class ExpenseFormComponent {
 
     this.expenseService.addExpenseApi(this.expenseDetails).subscribe({
       next:(res)=>{
-        console.log('Expense added successfully',res);
         this.expenseService.addExpense(res.expense);
         this.expenseDetails={
           date:'',
@@ -76,7 +75,8 @@ export class ExpenseFormComponent {
         };
         //this.router.navigate(['/dashboard']);
       },error:(err) =>{
-        console.log('user id error',err);
+        console.error("Error adding expense:", err);
+        alert("Something went wrong while adding your expense");
       }
     });
   }

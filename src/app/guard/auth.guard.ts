@@ -14,7 +14,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     return false;
     
   }// Verify token with backend
-  return http.get('http://localhost:3000/api/auth/verify-token').pipe(
+  return http.get('https://expense-tracker-backend-k359.onrender.com/api/auth/verify-token').pipe(
     map(() => true), // token valid
     catchError(() => {
       localStorage.removeItem('token'); // remove fake token

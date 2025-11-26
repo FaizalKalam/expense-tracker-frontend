@@ -21,7 +21,6 @@ export class LoginComponent {
   loginSubmit(){
     this.userService.logUser(this.logUser).subscribe({
       next:(res)=>{
-        console.log('login success',res);
         localStorage.setItem('token',res.token);
         this.router.navigate(['/dashboard']);
       },

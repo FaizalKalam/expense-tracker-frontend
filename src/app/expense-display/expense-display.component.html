@@ -16,7 +16,7 @@
 <!-- Filter -->
 <mat-form-field *ngIf="!isLoading" appearance="outline" class="filter-field">
   <mat-label>Search expenses</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search by item or category" #filterInput>
+  <input matInput (keyup)="applyFilter($event)" #filterInput>
 </mat-form-field>
 
 <!-- No Data Message -->

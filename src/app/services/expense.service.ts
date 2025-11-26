@@ -8,8 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ExpenseService {
 
   constructor(private http: HttpClient) { }
-
-  private apiUri= "http://localhost:3000/api/expense";
+//https://expense-tracker-backend-k359.onrender.com
+  private apiUri= "https://expense-tracker-backend-k359.onrender.com/api/expense";
 
   private expenseSource = new BehaviorSubject<any[]>([]);
   expenses$= this.expenseSource.asObservable();

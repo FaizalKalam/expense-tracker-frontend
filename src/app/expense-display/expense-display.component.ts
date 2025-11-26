@@ -41,7 +41,6 @@ export class ExpenseDisplayComponent implements OnInit, AfterViewInit, OnDestroy
       this.userService.getDashboard().subscribe({
         next: (res) => {
           this.currentUserId = res.user._id;
-          console.log('Current user ID:', this.currentUserId);
           
           // Fetch expenses from backend
           this.fetchExpenses();
@@ -56,7 +55,6 @@ export class ExpenseDisplayComponent implements OnInit, AfterViewInit, OnDestroy
     // Subscribe to expense updates
     this.subscriptions.add(
       this.expenseService.expenses$.subscribe((exp) => {
-        console.log('Expenses updated:', exp);
         this.filterUserExpenses(exp);
         
         // FIX: Defer the table setup until the view (Paginator/Sort) is guaranteed to be rendered
@@ -84,7 +82,6 @@ export class ExpenseDisplayComponent implements OnInit, AfterViewInit, OnDestroy
     this.isLoading=true;
     this.expenseService.getExpensesApi().subscribe({
       next: (res) => {
-        console.log('Expenses API response:', res);
         if (res && Array.isArray(res)) {
           this.expenseService.setExpenses(res);
         } else if (res && Array.isArray(res.expenses)) {
@@ -105,7 +102,7 @@ export class ExpenseDisplayComponent implements OnInit, AfterViewInit, OnDestroy
 
   private filterUserExpenses(expenses: any[]): void {
     if (!Array.isArray(expenses)) {
-      console.warn('Expenses is not an array:', expenses);
+
       this.dataSource.data = [];
       return;
     }
@@ -120,7 +117,6 @@ export class ExpenseDisplayComponent implements OnInit, AfterViewInit, OnDestroy
       .filter(e => e && e.userId)
       .filter(e => e.userId === this.currentUserId);
 
-    console.log('Filtered user expenses:', userExpenses);
     this.dataSource.data = userExpenses;
   }
 

@@ -28,7 +28,6 @@ export class RegisterComponent {
   regSubmit(){
     this.userService.regUser(this.regUser).subscribe({
       next:(res)=>{
-        console.log("Registeration successfull",res);
         alert(res.message);
 
         this.regUser={
@@ -40,7 +39,7 @@ export class RegisterComponent {
         this.router.navigate(['/login']);
       },
       error:(err)=>{
-        console.error("❌ Registration error:", err);
+        console.error("Registration error:", err);
         alert(err.error?.message || "Registration failed");
       }
     });
